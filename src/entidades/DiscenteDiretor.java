@@ -1,24 +1,27 @@
 package entidades;
 
 import entidades.enums.Modalidade;
-import entidades.enums.Papel;
+import entidades.enums.PapelSistema;
 import entidades.enums.Status;
 import entidades.enums.Tipo;
+import interfaces.CriadorOportunidade;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class DiscenteDiretor extends  Discente {
+public class DiscenteDiretor extends Discente implements CriadorOportunidade {
+
     private Grupo grupo;
     private String cargo;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
+
     public DiscenteDiretor(String nome, String email, String senha,
-                           Papel papel, String matricula, int semestreAtual,
+                           PapelSistema papelSistema, String matricula, int semestreAtual,
                            Curso curso, Grupo grupo, String cargo,
                            LocalDate dataInicio, LocalDate dataFim) {
-        super(nome, email, senha, Papel.discenteDiretor, matricula, semestreAtual, curso);
+        super(nome, email, senha, PapelSistema.discenteDiretor, matricula, semestreAtual, curso);
         this.grupo = grupo;
         this.cargo = cargo;
         this.dataInicio = dataInicio;
@@ -29,8 +32,8 @@ public class DiscenteDiretor extends  Discente {
         return grupo;
     }
 
-    public void setGrupo(Grupo grupoId) {
-        this.grupo = grupoId;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public String getCargo() {
@@ -45,25 +48,17 @@ public class DiscenteDiretor extends  Discente {
         return dataInicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
     public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(LocalDate dataFim) {
-        this.dataFim = dataFim;
-    }
-
+    @Override
     public Oportunidade criarOportunidade(String titulo, String descricao, Tipo tipo,
                                           Modalidade modalidade, int carga_horaria,
                                           int vagas, Status status, LocalDateTime inicio
-            , Usuarios autor, Docente responsavel) {
+                                          ,Usuarios autor,Docente responsavel) {
         return new Oportunidade(titulo,descricao,tipo,modalidade,carga_horaria,vagas
-                ,status,inicio,autor,responsavel);
+        ,status,inicio,autor,responsavel);
     }
 
 }
-

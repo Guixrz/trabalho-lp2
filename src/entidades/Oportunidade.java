@@ -3,36 +3,42 @@ package entidades;
 import entidades.enums.Modalidade;
 import entidades.enums.Status;
 import entidades.enums.Tipo;
+import excecoes.OperationNotAllowedException;
+import interfaces.Aprovavel;
 
 import java.time.LocalDateTime;
 
-public class Oportunidade {
+public class Oportunidade implements Aprovavel<Usuarios> {
+
     private String titulo;
     private String descricao;
     private Tipo tipo;
     private Modalidade modalidade;
-    private int cargaHoraria;
-    private int vagasDisponiveis;
+    private int carga_horaria;
+    private int vagas;
     private Status status;
     private LocalDateTime inicio;
     private LocalDateTime fim;
     private Usuarios autor;
     private Docente responsavel;
+    private Usuarios avaliador;
+    private String motivoRejeicao;
 
     public Oportunidade(String titulo, String descricao, Tipo tipo, Modalidade modalidade,
-                        int cargaHoraria, int vagasDisponiveis, Status status, LocalDateTime inicio,
+                        int carga_horaria, int vagas, Status status, LocalDateTime inicio,
                         Usuarios autor, Docente responsavel) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.tipo = tipo;
         this.modalidade = modalidade;
-        this.cargaHoraria = Oportunidade.this.cargaHoraria;
-        this.vagasDisponiveis = Oportunidade.this.vagasDisponiveis;
+        this.carga_horaria = carga_horaria;
+        this.vagas = vagas;
         this.status = status;
         this.inicio = inicio;
         this.autor = autor;
         this.responsavel = responsavel;
     }
+
     public String getTitulo() {
         return titulo;
     }
@@ -58,17 +64,18 @@ public class Oportunidade {
     }
 
     public int getCarga_horaria() {
-        return cargaHoraria;
+        return carga_horaria;
     }
 
     public int getVagas() {
-        return vagasDisponiveis;
+        return vagas;
     }
 
-    public void setVagas(int vagasDisponiveis) {
-        this.vagasDisponiveis = vagasDisponiveis;
+    public void setVagas(int vagas) {
+        this.vagas = vagas;
     }
 
+    @Override
     public Status getStatus() {
         return status;
     }
@@ -109,6 +116,26 @@ public class Oportunidade {
         this.status = Status.encerrada;
     }
 
+    public void rejeitarInscricao() {
+        this.status = Status.rejeitada;
+    }
+
+    @Override
+    public void aprovar(Usuarios avaliador) {
+        if (this.status != Status.pendente) {
+            throw new OperationNotAllowedException("Oportunidade não está pendente");
+        }
+        this.avaliador = avaliador;
+        this.publicar();
+    }
+
+    @Override
+    public void rejeitar(Usuarios avaliador, String motivo) {
+        this.avaliador = avaliador;
+        this.motivoRejeicao = motivo;
+        this.rejeitarInscricao();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,25 +144,6 @@ public class Oportunidade {
         return this.titulo.equals(op.titulo);
     }
 
-    @Override
-    public int hashCode() {
-        return titulo.hashCode();
-    }
+    @Override public int hashCode() { return titulo.hashCode(); }
 
-    @Override
-    public String toString() {
-        return "Oportunidade{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", tipo=" + tipo +
-                ", modalidade=" + modalidade +
-                ", cargaHoraria=" + cargaHoraria +
-                ", vagasDisponiveis=" + vagasDisponiveis +
-                ", status=" + status +
-                ", inicio=" + inicio +
-                ", fim=" + fim +
-                ", autor=" + autor +
-                ", responsavel=" + responsavel +
-                '}';
-    }
 }

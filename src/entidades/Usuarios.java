@@ -1,24 +1,23 @@
 package entidades;
 
-import entidades.enums.Papel;
+import entidades.enums.PapelSistema;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuarios {
+public abstract class Usuarios {
 
     private String nome;
     private String email;
     private String senha;
-    private Papel papel;
+    private PapelSistema papelSistema;
     private boolean ativo=false;
-    private List<Oportunidade>  oportunidades =  new ArrayList<Oportunidade>();
 
-    public Usuarios(String nome, String email, String senha, Papel papel) {
+    public Usuarios(String nome, String email, String senha, PapelSistema papelSistema) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.papel = papel;
+        this.papelSistema = papelSistema;
         this.ativo=true;
     }
 
@@ -42,12 +41,12 @@ public class Usuarios {
         return senha;
     }
 
-    public Papel getPapel() {
-        return papel;
+    public PapelSistema getPapel() {
+        return papelSistema;
     }
 
-    public void setPapel(Papel papel) {
-        this.papel = papel;
+    public void setPapel(PapelSistema papelSistema) {
+        this.papelSistema = papelSistema;
     }
 
     public boolean isAtivo() {
@@ -61,8 +60,5 @@ public class Usuarios {
     public void mudarSenha(String novaSenha) {
         this.senha = novaSenha;
     }
-
-    //public List<Oportunidade> obterOportunidade(){}
-
 
 }

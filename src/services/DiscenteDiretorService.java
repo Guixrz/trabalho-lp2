@@ -1,4 +1,4 @@
-package servicos;
+package services;
 
 import entidades.DiscenteDiretor;
 import entidades.Docente;
@@ -35,7 +35,7 @@ public class DiscenteDiretorService {
     public void listarOportunidadesGrupo(DiscenteDiretor diretor) {
         System.out.println("--- oportunidades do grupo: "
                 + diretor.getGrupo().getNome() + " ---");
-        for (Oportunidade o : oportunidadeRepo.listarOportunidades()) {
+        for (Oportunidade o : oportunidadeRepo.listarTodos()) {
             if (o.getAutor().equals(diretor)) {
                 System.out.println("- " + o.getTitulo() + " | " + o.getStatus());
             }

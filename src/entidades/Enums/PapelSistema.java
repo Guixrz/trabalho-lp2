@@ -1,6 +1,6 @@
 package entidades.enums;
 
-public enum Papel {
+public enum PapelSistema {
     discente,
     discenteDiretor,
     docente,

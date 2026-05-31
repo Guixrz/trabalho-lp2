@@ -1,6 +1,6 @@
 package entidades;
 
-import entidades.enums.Papel;
+import entidades.enums.PapelSistema;
 
 
 public class Discente extends Usuarios {
@@ -10,8 +10,8 @@ public class Discente extends Usuarios {
     private Curso curso;
 
 
-    public Discente(String nome, String email, String senha, Papel papel,String matricula,int semestreAtual,Curso curso) {
-        super(nome, email, senha, papel);
+    public Discente(String nome, String email, String senha, PapelSistema papelSistema, String matricula, int semestreAtual, Curso curso) {
+        super(nome, email, senha, papelSistema);
         this.matricula = matricula;
         this.semestreAtual = semestreAtual;
         this.curso = curso;

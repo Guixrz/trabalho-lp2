@@ -8,5 +8,3 @@ public enum Tipo {
     estagio,
     pesquisa
 }
-
-

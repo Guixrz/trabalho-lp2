@@ -7,4 +7,7 @@ public enum Status {
     em_progresso,
     encerrada,
     cancelada,
+    rejeitada,
+    abandonada,
+    aprovada
 }

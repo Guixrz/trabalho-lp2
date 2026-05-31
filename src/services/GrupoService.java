@@ -1,21 +1,24 @@
-package servicos;
+package services;
 
 import entidades.Docente;
 import entidades.Grupo;
-import entidades.enums.Responsavel_tipo;
 import entidades.enums.Status;
+import repositorios.GrupoRepositorio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GrupoService {
 
-    private List<Grupo> grupos = new ArrayList<>();
+    private GrupoRepositorio grupoRepositorio;
+
+    public GrupoService(GrupoRepositorio grupoRepositorio) {
+        this.grupoRepositorio = grupoRepositorio;
+    }
 
     public void cadastrar(String nome, String tipo, String email, String descricao,
                           Docente responsavel) {
-        Grupo grupo = new  Grupo(nome, tipo, email, descricao, Status.rascunho, responsavel);
-        grupos.add(grupo);
+        Grupo grupo = new Grupo(nome, tipo, email, descricao, Status.rascunho, responsavel);
+        grupoRepositorio.salvar(grupo);
         System.out.println("grupo cadastro");
     }
 
@@ -25,8 +28,8 @@ public class GrupoService {
     }
 
     public void listarAtivos() {
-        for(Grupo g : grupos){
-            if(g.getStatus() == Status.publicada){
+        for (Grupo g : grupoRepositorio.listarTodos()) {
+            if (g.getStatus() == Status.publicada) {
                 System.out.println("- " + g.getNome()
                         + " | Resp.: " + g.getResponsavel().getNome()
                         + " | " + g.getTipo());
@@ -39,6 +42,7 @@ public class GrupoService {
         System.out.println("grupo aprovado");
     }
 
-    public List<Grupo> listarTodos() { return grupos; }
-
+    public List<Grupo> listarTodos() {
+        return grupoRepositorio.listarTodos();
+    }
 }
