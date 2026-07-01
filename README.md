@@ -1,6 +1,6 @@
 # Sistema de Gerenciamento de Extensão - UFMA
 
-## 🚀 Sobre o projeto
+## Sobre o projeto
 
 Sistema desenvolvido para a disciplina de Laboratório de Programação 2 (LP2) do curso de Ciência da Computação da Universidade Federal do Maranhão (UFMA).
 
@@ -9,7 +9,7 @@ O sistema gerencia atividades de extensão universitária, permitindo que:
 - **Docentes** criem e validem essas oportunidades.
 - **Coordenadores** acompanhem o aproveitamento e emitam certificados.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Java 21**: Versão da linguagem de programação.
 - **Spring Boot**: Framework principal para a criação da aplicação e da API REST.
@@ -17,7 +17,7 @@ O sistema gerencia atividades de extensão universitária, permitindo que:
 - **H2 Database**: Banco de dados relacional em memória.
 - **Maven**: Gerenciador de dependências e build do projeto.
 
-## ⚙️ Como Executar
+## Como Executar
 
 1. **Pré-requisitos**:
    - Tenha o **Java 21** ou superior instalado.
@@ -35,7 +35,7 @@ O sistema gerencia atividades de extensão universitária, permitindo que:
 
 > **Nota**: A classe `DataInitializer` irá popular o banco com dados de exemplo na primeira inicialização para facilitar os testes.
 
-## 🗄️ Banco de Dados
+## Banco de Dados
 
 O projeto utiliza um banco de dados H2 em memória.
 
@@ -50,7 +50,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 🎓 Cursos (`/api/cursos`)
+### Cursos (`/api/cursos`)
 
 #### Criar um novo curso
 - **POST** `/api/cursos`
@@ -74,7 +74,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 👤 Usuários (`/api/usuarios`)
+### Usuários (`/api/usuarios`)
 
 #### Criar um novo usuário (Ex: Discente)
 - **POST** `/api/usuarios`
@@ -117,7 +117,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### ✨ Oportunidades (`/api/oportunidades`)
+### Oportunidades (`/api/oportunidades`)
 
 #### Criar uma nova oportunidade
 - **POST** `/api/oportunidades`
@@ -159,7 +159,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 📝 Inscrições (`/api/inscricoes`)
+### Inscrições (`/api/inscricoes`)
 
 #### Criar uma nova inscrição
 - **POST** `/api/inscricoes`
@@ -196,7 +196,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 👥 Grupos (`/api/grupos`)
+### Grupos (`/api/grupos`)
 
 #### Cadastrar um novo grupo
 - **POST** `/api/grupos`
@@ -225,7 +225,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 📜 Aproveitamentos (`/api/aproveitamentos`)
+### Aproveitamentos (`/api/aproveitamentos`)
 
 #### Submeter um novo aproveitamento
 - **POST** `/api/aproveitamentos`
@@ -251,7 +251,7 @@ A URL base para todas as requisições é `http://localhost:8081`.
 
 ---
 
-### 🎓 PPC (Projeto Pedagógico de Curso) (`/api/cursos/{cursoId}/versoes`)
+### PPC (Projeto Pedagógico de Curso) (`/api/cursos/{cursoId}/versoes`)
 
 #### Cadastrar uma nova versão de PPC
 - **POST** `/api/cursos/1/versoes`
