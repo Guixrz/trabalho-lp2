@@ -44,7 +44,7 @@ O projeto utiliza um banco de dados H2 em memória.
 - **Usuário**: `sa`
 - **Senha**: (deixe em branco)
 
-## 🧪 Guia de API e Exemplos de Requisições
+## Guia de API e Exemplos de Requisições
 
 A URL base para todas as requisições é `http://localhost:8081`.
 
